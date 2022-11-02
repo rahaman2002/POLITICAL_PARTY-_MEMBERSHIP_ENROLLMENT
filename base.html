@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+              background-image: url('img.jpg');
+              background-repeat: no-repeat;
+              background-attachment: fixed; 
+              background-size: 100% 100%;
+            }
+            </style>
+    </head>
+    <body >
+
+        <br><br>
+        <h1 align="center" style="color:black; background-color: aquamarine;"> <b> Political Party Membership Enrollment </b></h1>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>		
+        <table align="center">
+        <th align="center">
+        <fieldset style="width:600px;">
+        <legend align="center" style="color:yellow"><h2>ENROLLMENT</h2></legend>       
+        <form action="party.html" id="form" style="color:white" width="600px" >
+            <label>STATE : </label>
+            <select name="state"><option>Select...</option><option>Andhra Pradesh</option></select> <br/><br/>
+            <label for="date">Birth Year :</label>
+            <input type="text" id="date" required/> <br/><br/>
+            <i><mark><span id="perror"></span></mark></i> <br>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <button type="submit" style="background-color:chartreuse; color:black">
+               <b>Click to Proceed</b></button> <br/>
+            </form>
+            </th>
+            </table>
+            </fieldset>
+            <script>
+                let form=document.getElementById('form');
+                form.addEventListener("submit",event=>{event.preventDefault();validate();});
+        
+            function validate()
+            {
+                let  dob=document.getElementById('date');
+                let perror=document.getElementById('perror');
+                let year=dob.value.trim();
+        
+                        if(year=="")
+                        {
+                            perror.innerText="Birth year can't be empty";
+                            return false;
+                        }
+                        if(!(/[0-9]/).test(year))
+                        { 
+                            perror.innerText= "Birth year should contain numbers only";
+                            return false;
+                        }
+                        if(year.length!=4)
+                        {
+                            perror.innerText='Birth year should contain 4digits';
+                            return false;
+                        }                
+                        if(year>2004){
+                            perror.innerText="You are not Eligible to Enroll";
+                            return false;
+                        }
+                        form.submit();
+            }
+            </script>
+        </body>
+        </html>
